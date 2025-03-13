@@ -206,6 +206,8 @@ footer {
 }
 
 /* ===== Responsive Design ===== */
+
+/* Tablets and smaller devices */
 @media (max-width: 768px) {
     header, main, footer {
         padding: 1.5rem;
@@ -229,20 +231,156 @@ footer {
     }
 }
 
-@media (max-width: 480px) {
+/* Mobile specific optimizations - screens under 600px */
+@media (max-width: 600px) {
+    /* Font size adjustments for readability */
+    body {
+        font-size: 16px;
+    }
+
     header h1 {
         font-size: 1.8rem;
     }
+
+    header p {
+        font-size: 0.95rem;
+    }
     
+    /* Reduce padding to save space but keep things tappable */
+    header, main, footer {
+        padding: 1.2rem 1rem;
+    }
+
+    section {
+        padding: 1.2rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    /* Improve form layout for mobile */
+    .form-group {
+        margin-bottom: 1.2rem;
+    }
+    
+    label {
+        font-size: 0.95rem;
+        margin-bottom: 0.4rem;
+    }
+    
+    /* Make inputs larger for better touch targets */
+    input[type="text"],
+    input[type="number"],
+    select,
+    button {
+        width: 100%;
+        padding: 0.9rem;
+        font-size: 16px; /* Optimal size to prevent zooming on iOS */
+        margin-bottom: 0.5rem;
+        min-height: 48px; /* Minimum recommended touch target size */
+    }
+    
+    /* Make the add button prominent and easy to tap */
+    button {
+        padding: 0.9rem;
+        margin-top: 0.5rem;
+    }
+
+    /* Better spacing between sections */
+    .input-section, 
+    .courses-section,
+    .gpa-section {
+        margin-bottom: 1.5rem;
+    }
+
+    /* Improve table layout for mobile */
+    .courses-section h2 {
+        margin-bottom: 1rem;
+    }
+
+    /* Table styles for better mobile viewing */
+    table {
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+    
+    th, td {
+        padding: 0.75rem 0.6rem;
+    }
+
+    /* Make delete buttons easier to tap */
+    .delete-btn {
+        padding: 0.7rem 0.8rem;
+        min-width: 44px;
+        min-height: 44px;
+    }
+
+    /* Ensure the GPA display is prominent but compact */
+    #gpa-output {
+        padding: 1.2rem;
+        font-size: 1.1rem;
+    }
+}
+
+/* Very small screens */
+@media (max-width: 480px) {
+    /* Further optimize font size */
+    header h1 {
+        font-size: 1.6rem;
+    }
+    
+    /* Optimize table for very small screens */
     th, td {
         padding: 0.6rem;
         font-size: 0.9rem;
     }
     
-    /* Make table responsive on very small screens */
+    /* Ensure horizontal scrolling for tables without breaking layout */
     table {
         display: block;
         overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+        scrollbar-width: thin; /* Modern browsers */
+    }
+
+    table::-webkit-scrollbar {
+        height: 4px;
+    }
+    
+    table::-webkit-scrollbar-thumb {
+        background-color: rgba(0,0,0,0.2);
+        border-radius: 2px;
+    }
+
+    /* Optimize course list empty message for mobile */
+    .empty-message td {
+        padding: 1rem 0.5rem;
+    }
+
+    /* Reduce animation distance to be more subtle on mobile */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(5px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* Ensure buttons have proper hit targets */
+    button {
+        min-height: 48px;
+    }
+
+    /* Add loading indicator for improved UX */
+    .updating {
+        position: relative;
+    }
+    
+    .updating::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255,255,255,0.3);
+        border-radius: 8px;
     }
 }
 
